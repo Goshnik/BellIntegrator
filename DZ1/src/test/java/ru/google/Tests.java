@@ -34,7 +34,7 @@ public class Tests extends WebDriverSettings{
 
         System.out.println(listOfWebElement.size());
 
-        Assertions.assertTrue(
+        Assertions.assertFalse(
                 googlePO.getListOfWebElement()
                 .stream()
                 .anyMatch(x->x.getText().contains("Гладиолус — Википедия"))
