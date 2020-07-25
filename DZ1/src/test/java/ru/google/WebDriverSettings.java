@@ -8,10 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverSettings {
-    WebDriver chromeDriver;
 
-    public WebDriverSettings() {
-    }
+    WebDriver chromeDriver;
 
     @BeforeEach
     public void before() {
