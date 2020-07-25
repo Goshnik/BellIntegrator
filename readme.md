@@ -1,2 +1,2 @@
-#DZshki
-bol'she chem odna nadeyus'
+# DZshki
+Больше одной сделаю надеюсь.
