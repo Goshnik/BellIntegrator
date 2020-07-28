@@ -10,7 +10,14 @@ import java.util.List;
 
 public class Steps {
 
-    @Step("Шаг 1. Проверка количества результатов больше 3")
+    @Step("Шаг 1. Совершение поискового запроса")
+    public static void doGoogleSearch(WebDriver chromeDriver, String searchQuery){
+        PageObjectGoogleSearch googlePO = new PageObjectGoogleSearch(chromeDriver, searchQuery);
+        googlePO.refreshListElements();
+    }
+
+
+    @Step("Шаг 2. Проверка количества результатов больше 3")
     public static void checkResultAmount(WebDriver chromeDriver){
         List<WebElement> listOfWebElement = chromeDriver.findElements(By.className("g"));
         if (listOfWebElement.size() > 3){
@@ -31,6 +38,7 @@ public class Steps {
             Assertions.assertFalse(true);
         }
         else {
+            CustomUtils.noTitleMessage();
             CustomUtils.getScreen(chromeDriver);
             Assertions.assertFalse(false);
         }

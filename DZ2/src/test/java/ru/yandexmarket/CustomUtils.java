@@ -1,4 +1,4 @@
-package ru.google;
+package ru.yandexmarket;
 
 import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
@@ -13,7 +13,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class CustomUtils {
-
     @Attachment
     public static byte[] getScreen(WebDriver chromeDriver){
         File screenshot = ((TakesScreenshot)chromeDriver).getScreenshotAs(OutputType.FILE);
@@ -41,5 +40,10 @@ public class CustomUtils {
     }
 
     @Attachment
-    public static String noTitleMessage(){return "Данный заголовок не найден";}
+    public static String noPagesMessage(){
+        return "Достигнута последняя страница поиска";
+    }
+
+    @Attachment
+    public static String wrongPhoneMessage() {return "Найден не iPhone";}
 }
