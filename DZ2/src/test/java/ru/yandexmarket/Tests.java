@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Tests extends WebDriverSettings{
 
+
     @Test
     @Description(value = "Ищём не айфоны при поисковом запросе \"iPhone\"")
     public void testSearchResult(){

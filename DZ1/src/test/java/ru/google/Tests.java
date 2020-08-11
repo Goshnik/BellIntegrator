@@ -21,6 +21,11 @@ public class Tests extends WebDriverSettings{
     @Description(value = "проверка наличия результата \"Гладиолус — Википедия\"")
     public void testWiki(){
         Steps.doGoogleSearch(chromeDriver, "Гладиолус");
+        try {
+            Thread.sleep(10000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
         Steps.checkContainsName(chromeDriver, "Гладиолус — Википедия");
     }
 }

@@ -17,8 +17,6 @@ public class Steps {
     @Step("Шаг 1 — получение и изучение списка элементов")
     public static void listOfPhones(WebDriver chromeDriver){
         List<WebElement> articles = chromeDriver.findElements(By.xpath("//article//h3/a[@title]"));
-        System.out.println(articles.size());
-        articles.stream().forEach(x-> System.out.println(x.getText()));
         if (articles.stream().allMatch(x->x.getText().contains("iPhone"))){
             Assertions.assertTrue(true);
         }
@@ -34,7 +32,7 @@ public class Steps {
     @Step("Шаг 2 — движение по страницам")
     public static WebElement pagingSearch(WebDriver chromeDriver, WebElement pagingButton){
         try {
-            pagingButton = chromeDriver.findElement(By.xpath("//a[@class=\"button button_size_s button_theme_pseudo n-pager__button-next i-bem n-smart-link button_js_inited n-smart-link_js_inited\"]"));
+            pagingButton = chromeDriver.findElement(By.xpath("//a[@aria-label = \"Следующая страница\"]"));
             pagingButton.click();
             return pagingButton;
         } catch (NoSuchElementException noButton){
