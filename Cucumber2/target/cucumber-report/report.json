@@ -1,0 +1,100 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 4,
+        "name": "Страницы есть",
+        "description": "",
+        "id": "поиск-не-айфона-в-яндекс-маркете-при-поисковом-запросе--iphone-;страницы-есть",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 7433316000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "перейти на сайт \u0027https://market.yandex.ru/\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "https://market.yandex.ru/",
+                  "offset": 17
+                }
+              ],
+              "location": "MyStepDef.перейти_на_сайт(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11168850700,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "Начать поиск по слову \u0027iPhone\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "iPhone",
+                  "offset": 23
+                }
+              ],
+              "location": "MyStepDef.поисковый_запрос(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 899971400,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "Проверить все результаты на странице",
+            "match": {
+              "location": "MyStepDef.проверка_результатов()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 302790500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "Перейти на следующую страницу",
+            "match": {
+              "location": "MyStepDef.переход()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 990064200,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "закончить работу",
+            "match": {
+              "location": "MyStepDef.закончить_работу()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@otlad"
+          }
+        ]
+      }
+    ],
+    "name": "Поиск не айфона в яндекс маркете при поисковом запросе \u0027iPhone\u0027",
+    "description": "",
+    "id": "поиск-не-айфона-в-яндекс-маркете-при-поисковом-запросе--iphone-",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/features/iPhoneSearch.feature",
+    "tags": []
+  }
+]

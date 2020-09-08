@@ -14,15 +14,19 @@ import java.util.Optional;
 
 public class Steps {
 
+    private static String selectorElement = "//article//h3/a[@title]";
+    private static String selectorPagingButton = "//a[@aria-label = \"Следующая страница\"]";
+
+
     @Step("Шаг 1 — получение и изучение списка элементов")
     public static void listOfPhones(WebDriver chromeDriver){
-        List<WebElement> articles = chromeDriver.findElements(By.xpath("//article//h3/a[@title]"));
+        List<WebElement> articles = chromeDriver.findElements(By.xpath(selectorElement));
         if (articles.stream().allMatch(x->x.getText().contains("iPhone"))){
             Assertions.assertTrue(true);
         }
         else{
             WebElement notIphone = articles.stream().filter(x-> !x.getText().contains("iPhone")).findAny().orElse(null);
-                System.out.println(notIphone.getText());
+            System.out.println(notIphone.getText());
             CustomUtils.getScreen(chromeDriver, notIphone);
             CustomUtils.wrongPhoneMessage();
             Assertions.assertTrue(false);
@@ -32,7 +36,7 @@ public class Steps {
     @Step("Шаг 2 — движение по страницам")
     public static WebElement pagingSearch(WebDriver chromeDriver, WebElement pagingButton){
         try {
-            pagingButton = chromeDriver.findElement(By.xpath("//a[@aria-label = \"Следующая страница\"]"));
+            pagingButton = chromeDriver.findElement(By.xpath(selectorPagingButton));
             pagingButton.click();
             return pagingButton;
         } catch (NoSuchElementException noButton){

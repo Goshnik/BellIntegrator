@@ -1,0 +1,180 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 5,
+        "name": "Результатов больше 3",
+        "description": "",
+        "id": "проверка-количества-результатов;результатов-больше-3",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6858308300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "перейти на сайт \u0027https://www.google.ru/\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "https://www.google.ru/",
+                  "offset": 17
+                }
+              ],
+              "location": "MyStepDef.перейти_на_сайт(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1339104400,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "Осуществить поиск по запросу \u0027Гладиолус\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Гладиолус",
+                  "offset": 30
+                }
+              ],
+              "location": "MyStepDef.Осуществить_поиск_по_запросу(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 15377000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "проверить количество результатов больше 3",
+            "match": {
+              "location": "MyStepDef.Проверка_количества_результатов()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 870588800,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "закончить работу",
+            "match": {
+              "location": "MyStepDef.закончить_работу()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@otladTest"
+          }
+        ]
+      }
+    ],
+    "name": "Проверка количества результатов",
+    "description": "  Количество результатов поискового запроса этой фичей",
+    "id": "проверка-количества-результатов",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/features/checkCount.feature",
+    "tags": []
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 5,
+        "name": "В названии нет слова гладиолус",
+        "description": "",
+        "id": "проверка-названия-страницы-на-википедии;в-названии-нет-слова-гладиолус",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6072609300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "перейти на сайт \u0027https://www.google.ru/\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "https://www.google.ru/",
+                  "offset": 17
+                }
+              ],
+              "location": "MyStepDef.перейти_на_сайт(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1255642900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "Осуществить поиск по запросу \u0027Гладиолус\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Гладиолус",
+                  "offset": 30
+                }
+              ],
+              "location": "MyStepDef.Осуществить_поиск_по_запросу(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 35627200,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "Проверить отсутствие слова \u0027Гладиолус\u0027 в ссылке на Википедию",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Гладиолус",
+                  "offset": 28
+                }
+              ],
+              "location": "MyStepDef.Проверка_названия_страницы(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 923926300,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "закончить работу",
+            "match": {
+              "location": "MyStepDef.закончить_работу()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@otladTest"
+          }
+        ]
+      }
+    ],
+    "name": "Проверка названия страницы на Википедии",
+    "description": "  Название должно содержать гладиолус",
+    "id": "проверка-названия-страницы-на-википедии",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/features/checkWikiPageName.feature",
+    "tags": []
+  }
+]

@@ -1,11 +1,14 @@
 package Selenide.Tests;
 
+import Selenide.PageObjects.YaMarketSearchResult;
+import Selenide.PageObjects.YandexMarketMainPage;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import ru.yandexmarket.CustomUtils;
 
 
@@ -13,53 +16,52 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Steps {
 
-    @Step("Шаг 1 — получение и изучение списка элементов")
-    public static void listOfPhonesStream0(){
-        ElementsCollection articles = $$(By.xpath("//article//h3/a[@title]"));
-        System.out.println(articles.isEmpty());
-        for (int i = 0; i < articles.size(); i++){
-            SelenideElement temp = articles.get(i);
-            if (temp.getText().contains("iPhone")){
-                continue;
-            }
-            else{
-                System.out.println(articles.get(i).getText());
-                Selenide.Tests.CustomUtils.wrongPhoneMessage();
-                Assertions.assertTrue(false);
-            }
+    private static String pagingButtonSelector = "//a[@class = '_2prNUdeCKH _3OFYTyXi90']";
+
+    @Step("Шаг 1 — осуществление поиска по запросу {query}")
+    public static void startup(){
+        YandexMarketMainPage yaMarket = open("https://market.yandex.ru/", YandexMarketMainPage.class);
+
+        YaMarketSearchResult SR = yaMarket.search("iPhone");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         Assertions.assertTrue(true);
     }
 
-
-    @Step("Шаг 1 — получение и изучение списка элементов")
-    public static void listOfPhones(){
-        ElementsCollection articles = $$(By.xpath("//article//h3/a[@title]"));
-        for (int i = 0; i < articles.size(); i++){
-            SelenideElement temp = articles.get(i);
-            if (temp.getText().contains("iPhone")){
-                continue;
-            }
-            else{
-                System.out.println(articles.get(i).getText());
-                Selenide.Tests.CustomUtils.wrongPhoneMessage();
-                Assertions.assertTrue(false);
-            }
+    @Step("Шаг 2 — получение и изучение списка элементов")
+    public static void listOfPhonesStream(){
+        YaMarketSearchResult YMSR = new YaMarketSearchResult();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        Assertions.assertTrue(true);
+        ElementsCollection articles = YMSR.results();
+        WebElement notIphone = articles.stream().filter(x-> !x.getText().contains("iPhone")).findAny().orElse(null);
+        if (notIphone == null){
+            Assertions.assertTrue(true);
+        }
+        else{
+            System.out.println(notIphone.getText());
+            CustomUtils.wrongPhoneMessage();
+            Assertions.assertTrue(false);
+        }
     }
 
-    @Step("Шаг 2 — движение по страницам")
-    public static SelenideElement pagingSearchYa(SelenideElement pagingButton){
+    @Step("Шаг 3 — движение по страницам")
+    public static SelenideElement pagingSearchYa(){
         try{
-            pagingButton = $(By.xpath("//a[@class = '_2prNUdeCKH _3OFYTyXi90']"));
+            SelenideElement pagingButton = $(By.xpath(pagingButtonSelector));
             pagingButton.click();
             return pagingButton;
         } catch (ElementNotFound e){
             System.out.println("Кнопки нет");
             CustomUtils.noPagesMessage();
             Assertions.assertTrue(true);
-            return pagingButton = null;
+            return null;
         }
     }
 }

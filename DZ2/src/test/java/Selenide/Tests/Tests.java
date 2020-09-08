@@ -1,16 +1,12 @@
 package Selenide.Tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import static com.codeborne.selenide.Selenide.*;
 
 public class Tests {
 
@@ -31,16 +27,12 @@ public class Tests {
     @Test
     @Description(value = "Ищём не айфоны при поисковом запросе \"iPhone\"")
     public void testSearchResult(){
-        open("https://market.yandex.ru/");
-        $(By.xpath("//input[@id=\"header-search\"]")).setValue("iPhone").pressEnter();
-        SelenideElement pagingButton = null;
+        Steps.startup();
         boolean lastPageReached = false;
-        while (lastPageReached == false){
-            Steps.listOfPhones();
-            pagingButton = Steps.pagingSearchYa(pagingButton);
-            if (pagingButton == null){
+        while (!lastPageReached){
+            Steps.listOfPhonesStream();
+            if (Steps.pagingSearchYa() == null)
                 lastPageReached = true;
-            }
         }
         Assertions.assertTrue(true);
     }

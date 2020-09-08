@@ -14,23 +14,23 @@ public class WebDriverSettings {
 
     WebDriver chromeDriver;
 
-    //@BeforeEach
+    @BeforeEach
     public void before() {
         System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER"));
         this.chromeDriver = new ChromeDriver();
         this.chromeDriver.manage().window().maximize();
-        this.chromeDriver.manage().timeouts().pageLoadTimeout(40L, TimeUnit.SECONDS);
-        this.chromeDriver.manage().timeouts().setScriptTimeout(40L, TimeUnit.SECONDS);
-        this.chromeDriver.manage().timeouts().implicitlyWait(40L, TimeUnit.SECONDS);
+        this.chromeDriver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+        this.chromeDriver.manage().timeouts().setScriptTimeout(40, TimeUnit.SECONDS);
+        this.chromeDriver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
 
-    //@AfterEach
+    @AfterEach
     public void after() {
         this.chromeDriver.quit();
     }
 
 
-    @BeforeEach
+//    @BeforeEach
     private void startTestInDocker(){
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
@@ -48,7 +48,7 @@ public class WebDriverSettings {
         chromeDriver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
 
-    @AfterEach
+//    @AfterEach
     private void endTestInDocker(){
         if(chromeDriver!=null){
             chromeDriver.quit();

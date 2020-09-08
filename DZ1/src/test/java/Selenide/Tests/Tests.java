@@ -1,5 +1,7 @@
 package Selenide.Tests;
 
+import Selenide.PageObjects.GoogleMainPage;
+import Selenide.PageObjects.GoogleSearchResult;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Description;
@@ -10,9 +12,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class Tests {
 
@@ -33,17 +35,17 @@ public class Tests {
     @Test
     @Description(value = "тестирование поискового запроса в Google \"Гладиолус\"")
     public void testSearchResultCount(){
-        open("https://www.google.ru/");
-        $(By.name("q")).setValue("Гладиолус").pressEnter();
-        $$(By.xpath("//div[@class='g']")).shouldHave(sizeGreaterThanOrEqual(3));
+        GoogleMainPage google = open("https://www.google.ru/",GoogleMainPage.class);
+        GoogleSearchResult resultingSearch = google.search("Гладиолус");
+        Assertions.assertTrue($$(By.xpath(resultingSearch.getSelectorSearchItem())).size() >= 3);
     }
 
     @Test
     @Description(value = "проверка наличия результата \"Гладиолус — Википедия\"")
     public void testWikiPage(){
-        open("https://www.google.ru/");
-        $(By.name("q")).setValue("Гладиолус").pressEnter();
-        ElementsCollection searchResults = $$(By.xpath("//div[@class='g']//h3"));
+        GoogleMainPage google = open("https://www.google.ru/",GoogleMainPage.class);
+        GoogleSearchResult resultingSearch = google.search("Гладиолус");
+        ElementsCollection searchResults = $$(By.xpath(resultingSearch.getSelectorSearchItem()));
         Assertions.assertTrue(searchResults.findBy(text("Гладиолус — Википедия")).exists(), "Искомый результат не найден");
     }
 
