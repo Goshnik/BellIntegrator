@@ -1,7 +1,5 @@
 package ru.yandexmarket;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;

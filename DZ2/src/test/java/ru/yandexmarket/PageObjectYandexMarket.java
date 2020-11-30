@@ -5,14 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class PageObjectYandexMarket {
 
     private WebDriver chromeDriver;
     private WebElement searchField;
     private WebElement searchButton;
-
 
     private String selectorSearchField = "//input[@id=\"header-search\"]";
     private String selectorSearchButton = "//button[@type='submit']";
