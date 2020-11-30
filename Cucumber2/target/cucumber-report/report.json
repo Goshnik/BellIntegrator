@@ -12,7 +12,7 @@
         "steps": [
           {
             "result": {
-              "duration": 7433316000,
+              "duration": 6141668700,
               "status": "passed"
             },
             "line": 5,
@@ -30,8 +30,9 @@
           },
           {
             "result": {
-              "duration": 11168850700,
-              "status": "passed"
+              "error_message": "java.lang.NullPointerException\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:397)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementsByXPath(RemoteWebDriver.java:504)\r\n\tat org.openqa.selenium.By$ByXPath.findElements(By.java:356)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:351)\r\n\tat ru.yandex.market.PageObjectYandexMarket.refreshListElements(PageObjectYandexMarket.java:24)\r\n\tat ru.yandex.market.MyStepDef.поисковый_запрос(MyStepDef.java:29)\r\n\tat ✽.Начать поиск по слову \u0027iPhone\u0027(file:src/test/java/features/iPhoneSearch.feature:6)\r\n",
+              "duration": 7569379300,
+              "status": "failed"
             },
             "line": 6,
             "name": "Начать поиск по слову \u0027iPhone\u0027",
@@ -48,8 +49,8 @@
           },
           {
             "result": {
-              "duration": 899971400,
-              "status": "passed"
+              "duration": 627400,
+              "status": "skipped"
             },
             "line": 7,
             "name": "Проверить все результаты на странице",
@@ -60,8 +61,8 @@
           },
           {
             "result": {
-              "duration": 302790500,
-              "status": "passed"
+              "duration": 190400,
+              "status": "skipped"
             },
             "line": 8,
             "name": "Перейти на следующую страницу",
@@ -72,8 +73,8 @@
           },
           {
             "result": {
-              "duration": 990064200,
-              "status": "passed"
+              "duration": 168800,
+              "status": "skipped"
             },
             "line": 9,
             "name": "закончить работу",

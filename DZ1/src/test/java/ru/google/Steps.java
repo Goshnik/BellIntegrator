@@ -14,22 +14,23 @@ public class Steps {
     private static String selectorNamePage = "//div[@class='g']//h3";
 
     @Step("Шаг 1. Совершение поискового запроса")
-    public static void doGoogleSearch(WebDriver chromeDriver, String searchQuery){
+    public static PageObjectGoogleSearch doGoogleSearch(WebDriver chromeDriver, String searchQuery){
         PageObjectGoogleSearch googlePO = new PageObjectGoogleSearch(chromeDriver);
         googlePO.doSearch(searchQuery);
         googlePO.refreshListElements();
+        return googlePO;
     }
 
 
     @Step("Шаг 2. Проверка количества результатов больше 3")
-    public static void checkResultAmount(WebDriver chromeDriver){
-        List<WebElement> listOfWebElement = chromeDriver.findElements(By.xpath(selectorSearchItem));
+    public static void checkResultAmount(WebDriver chromeDriver, PageObjectGoogleSearch googlePO){
+        List<WebElement> listOfWebElement = chromeDriver.findElements(By.xpath(googlePO.getSelectorSearchItem()));
         if (listOfWebElement.size() > 3){
             Assertions.assertTrue(true);
         }
         else {
             CustomUtils.getScreen(chromeDriver);
-            Assertions.assertTrue(false);
+            Assertions.fail();
         }
     }
 

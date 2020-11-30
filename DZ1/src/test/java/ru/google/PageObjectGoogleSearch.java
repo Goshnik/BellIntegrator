@@ -40,4 +40,11 @@ public class PageObjectGoogleSearch {
         return listOfWebElement;
     }
 
+    public String getSelectorSearchItem() {
+        return selectorSearchItem;
+    }
+
+    public String getSelectorNamePage() {
+        return selectorNamePage;
+    }
 }
